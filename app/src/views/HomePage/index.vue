@@ -1,8 +1,20 @@
 <template>
-  <section id="home-page"></section>
+  <section id="home-page">
+    <home-page-header class="header"></home-page-header>
+    <div class="content">
+      <home-page-news></home-page-news>
+      <home-page-stats></home-page-stats>
+      <home-page-suggestions></home-page-suggestions>
+    </div>
+  </section>
 </template>
 
 <script>
+import HomePageHeader from "./HomePageHeader";
+import HomePageNews from "./HomePageNews";
+import HomePageStats from "./HomePageStats";
+import HomePageSuggestions from "./HomePageSuggestions";
+
 export default {
   name: "HomePage",
   created() {
@@ -12,8 +24,21 @@ export default {
 
     document.title = "Eco Beko | Home";
   },
-  components: {}
+  components: {
+    HomePageHeader,
+    HomePageNews,
+    HomePageStats,
+    HomePageSuggestions
+  }
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+#home-page {
+  height: 100%;
+  background-image: url("../../assets/home-page-background.png");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+</style>
