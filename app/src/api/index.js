@@ -20,5 +20,15 @@ export default {
     };
 
     return await api.post("/users/create.php", body);
+  },
+  async validate(phone, password) {
+    phone = phone.substr(1);
+
+    const body = {
+      phone,
+      password
+    };
+
+    return await api.post("/users/validate.php", body);
   }
 };

@@ -59,7 +59,19 @@ export default {
     };
   },
   methods: {
-    signIn() {}
+    async signIn() {
+      const { phone, password } = this.form;
+      phone.error = !phone.pattern.test(phone.value);
+      password.error = !password.pattern.test(password.value);
+
+      if (!phone.error && !password.error) {
+        const user = await api.validate(phone.value, password.value);
+        this.$store.commit("setToken", phone.value);
+        this.$store.commit("setUser", user);
+
+        this.$router.push("/");
+      }
+    }
   }
 };
 </script>
