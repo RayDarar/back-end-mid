@@ -1,0 +1,45 @@
+@mixin pos($x, $y, $x1: $x + 1, $y1: $y + 1) {
+  grid-row-start: $y;
+  grid-row-end: $y1;
+  grid-column-start: $x;
+  grid-column-end: $x1;
+}
+
+.button {
+  font-size: 1rem;
+  padding: 0.7em 2em;
+  color: $accentWhite;
+  font-family: Montserrat;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+
+  &:hover,
+  &:active {
+    opacity: 1;
+  }
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition-duration: 0.5s;
+  transition-property: height, opacity, transform;
+  transition-timing-function: ease-in-out;
+  overflow: hidden;
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(5em, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-5em, 0);
+}

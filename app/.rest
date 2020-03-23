@@ -1,0 +1,24 @@
+POST http://localhost/eco-beko/api/users/create.php
+Content-Type: application/json
+
+{
+  "phone": "77086144672",
+  "name": "Ansar",
+  "surname": "Ryspekov",
+  "gender": 1,
+  "password": "test",
+  "birthday": "19-01-2001"
+}
+
+###
+
+GET http://localhost/eco-beko/
+
+###
+POST http://localhost/eco-beko/api/users/validate.php
+Content-Type: application/json
+
+{
+  "phone": "77086144672",
+  "password": "test"
+}
