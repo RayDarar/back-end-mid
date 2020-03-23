@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     token: "",
-    user: {}
+    user: null
   },
   mutations: {
     setToken(state, token) {
@@ -20,11 +20,11 @@ export default new Vuex.Store({
   },
   getters: {
     getToken(state) {
-      if (state.token) state.token = localStorage.getItem("token");
+      if (state.token == "") state.token = localStorage.getItem("token");
       return state.token;
     },
     getUser(state) {
-      if (state.user) state.user = JSON.parse(localStorage.getItem("user"));
+      if (state.user == null) state.user = JSON.parse(localStorage.getItem("user"));
       return state.user;
     }
   }

@@ -9,9 +9,11 @@ export default {
     if (!this.$store.getters.getToken) {
       this.$router.push("/welcome");
     }
+
     document.title = "Eco Beko | Home";
-  }
+  },
+  components: {}
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

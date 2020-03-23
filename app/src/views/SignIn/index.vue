@@ -67,12 +67,12 @@ export default {
       password.error = !password.pattern.test(password.value);
 
       if (!phone.error && !password.error) {
-        const user = await api.validate(phone.value, password.value);
-        if (user.data.err) {
-          this.$refs.box.alert(user.data.err);
+        const response = await api.validate(phone.value, password.value);
+        if (response.data.err) {
+          this.$refs.box.alert(response.data.err);
         } else {
           this.$store.commit("setToken", phone.value);
-          this.$store.commit("setUser", user);
+          this.$store.commit("setUser", response.data);
 
           this.$router.push("/");
         }
