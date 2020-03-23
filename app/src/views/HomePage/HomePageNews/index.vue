@@ -1,15 +1,25 @@
 <template>
-  <section class="news"></section>
+  <section class="news">
+    <news-header></news-header>
+  </section>
 </template>
 
 <script>
+import NewsHeader from "./NewsHeader";
+
 export default {
-  name: "HomePageNews"
+  name: "HomePageNews",
+  components: {
+    NewsHeader
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .news {
-  height: 200%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
 }
 </style>
