@@ -30,6 +30,9 @@ export default {
     "welcome-header": Header
   },
   created() {
+    if (this.$store.getters.getToken) {
+      this.$router.push("/");
+    }
     document.title = "EcoBeko | Welcome";
   }
 };
