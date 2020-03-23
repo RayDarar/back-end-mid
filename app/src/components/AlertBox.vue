@@ -2,7 +2,7 @@
   <transition name="slide-left">
     <div v-if="show" class="alert-box">
       <span class="text">
-        <slot />
+        {{ message }}
       </span>
     </div>
   </transition>
@@ -18,7 +18,8 @@ export default {
     }
   },
   methods: {
-    alert() {
+    alert(message="Something went wrong...") {
+      this.message = message;
       this.show = true;
       setTimeout(() => {
         this.show = false;
@@ -27,7 +28,8 @@ export default {
   },
   data() {
     return {
-      show: false
+      show: false,
+      message: ""
     };
   }
 };
