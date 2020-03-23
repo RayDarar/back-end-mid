@@ -24,14 +24,8 @@ if ($result) {
   $user = $result["data"][0];
   if ($user["password"] == $password) {
     echo json_encode($user);
-  } else {
-    http_response_code(406);
-    echo json_encode(array("err" => "password is incorrect"));
-  }
-} else {
-  http_response_code(404);
-  echo json_encode(array("err" => "user do not exists"));
-}
+  } else echo json_encode(array("err" => "password is incorrect"));
+} else echo json_encode(array("err" => "user do not exists"));
 
 $db->close();
 ?>

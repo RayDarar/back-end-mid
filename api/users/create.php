@@ -23,10 +23,8 @@ $result = $db->select(
   "SELECT * FROM users 
    WHERE phone_number='$phone_number'");
 
-if ($result["rows"]) {
-  http_response_code(406);
-  echo json_encode(array("error" => "user exists"));
-} else {
+if ($result["rows"]) echo json_encode(array("err" => "user exists"));
+else {
   $db->insert(
     "INSERT INTO 
     users(phone_number, first_name, last_name, gender, password, birthday) 
