@@ -70,7 +70,10 @@ Terms of Use and Privacy Policy."
       ></base-radio>
       <input type="submit" class="button sign-up" />
     </form>
-    <p class="redir">Already have an accound? <span class="redir__link">Sign In</span></p>
+    <p class="redir">
+      Already have an accound?
+      <span class="redir__link" @click="$router.push('/welcome/sign-in')">Sign In</span>
+    </p>
   </section>
 </template>
 
@@ -239,5 +242,14 @@ export default {
 
 .redir {
   @include pos(3, 3);
+  align-self: flex-start;
+  color: $grayText;
+  font-size: 1.2rem;
+
+  &__link {
+    font-size: inherit;
+    color: $accentBlue;
+    cursor: pointer;
+  }
 }
 </style>

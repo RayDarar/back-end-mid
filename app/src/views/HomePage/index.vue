@@ -7,7 +7,7 @@ export default {
   name: "HomePage",
   created() {
     if (!this.$store.getters.getToken) {
-      this.$router.push("/welcome/sign-in");
+      this.$router.push("/welcome");
     }
     document.title = "Eco Beko | Home";
   }
