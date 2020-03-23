@@ -127,10 +127,9 @@ export default {
         if (response.data.err) {
           this.$refs.box.alert(response.data.err);
         } else {
-          this.$store.commit("setToken", phone.value);
           // the most hardcoded piece of doom, that I have ever done (sorry future me)
           const user = (await api.validate(phone.value, password.value)).data;
-          this.$store.commit("setUser", user);
+          this.$store.commit("setToken", user);
           this.$router.push("/");
         }
       }

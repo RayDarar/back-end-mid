@@ -37,6 +37,9 @@ import AlertBox from "@/components/AlertBox";
 export default {
   name: "SignIn",
   created() {
+    if (this.$store.getters.getToken) {
+      this.$router.push("/");
+    }
     document.title = "EcoBeko | Sign In";
   },
   components: {
@@ -71,8 +74,7 @@ export default {
         if (response.data.err) {
           this.$refs.box.alert(response.data.err);
         } else {
-          this.$store.commit("setToken", phone.value);
-          this.$store.commit("setUser", response.data);
+          this.$store.commit("setToken", response.data);
 
           this.$router.push("/");
         }
