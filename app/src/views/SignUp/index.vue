@@ -2,6 +2,7 @@
   <section id="sign-up">
     <h2 class="title">Sign Up</h2>
     <form class="form" @submit.prevent="signUp">
+      <alert-box :time="1500" class="alert" ref="box"></alert-box>
       <h3>Create a new account</h3>
       <base-input
         text="First Name"
@@ -21,7 +22,7 @@
         text="Phone Number"
         v-model="form.phone.value"
         :error.sync="form.phone.error"
-        error-text="Check your phone number"
+        error-text="Follow the pattern (+7xxxxxxxxxx)"
         class="form-input"
       ></base-input>
       <div class="gender-wrapper">
@@ -81,6 +82,7 @@ Terms of Use and Privacy Policy."
 import api from "../../api";
 import BaseInput from "@/components/BaseInput";
 import BaseRadio from "@/components/BaseRadio";
+import AlertBox from "@/components/AlertBox";
 
 export default {
   name: "SignUp",
@@ -92,7 +94,8 @@ export default {
   },
   components: {
     BaseInput,
-    BaseRadio
+    BaseRadio,
+    AlertBox
   },
   methods: {
     async signUp() {
@@ -112,7 +115,7 @@ export default {
         !birthday.error &&
         !policy.error
       ) {
-        const user = await api.register(
+        const response = await api.register(
           phone.value,
           name.value,
           surname.value,
@@ -121,8 +124,15 @@ export default {
           birthday.value
         );
 
-        this.$store.commit("setToken", phone.value);
-        this.$router.push("/");
+        if (response.data.err) {
+          this.$refs.box.alert(response.data.err);
+        } else {
+          this.$store.commit("setToken", phone.value);
+          // the most hardcoded piece of doom, that I have ever done (sorry future me)
+          const user = (await api.validate(phone.value, password.value)).data;
+          this.$store.commit("setUser", user);
+          this.$router.push("/");
+        }
       }
     },
     test(...items) {
@@ -209,6 +219,7 @@ export default {
   width: 100%;
   height: 100%;
   padding: 1em;
+  position: relative;
 
   h3 {
     align-self: center;

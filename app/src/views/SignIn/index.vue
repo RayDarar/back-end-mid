@@ -8,7 +8,7 @@
         text="Phone Number"
         v-model="form.phone.value"
         :error.sync="form.phone.error"
-        error-text="Check your phone number"
+        error-text="Follow the pattern (+7xxxxxxxxxx)"
         class="form-input"
       ></base-input>
       <base-input
