@@ -1,6 +1,10 @@
 <template>
   <transition name="slide-left">
-    <div v-if="show" class="alert-box"><slot class="text" /></div>
+    <div v-if="show" class="alert-box">
+      <span class="text">
+        <slot />
+      </span>
+    </div>
   </transition>
 </template>
 
@@ -30,13 +34,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/_globals.scss";
 @import "../scss/_base.scss";
 
 .alert-box {
-  width: 240px;
+  width: 300px;
   border-radius: 15px;
   background-color: rgba($color: darkred, $alpha: 0.7);
-  padding: 0.5em 1em;
+  padding: 1em 1.5em;
   position: absolute;
   top: 0;
 }

@@ -2,6 +2,7 @@
   <section id="sign-in">
     <h2 class="title">Sign In</h2>
     <form class="form" @submit.prevent="signIn">
+      <alert-box class="alert" ref="box">{{ errorMessage }}</alert-box>
       <h3>Login to your account</h3>
       <base-input
         text="Phone Number"
@@ -10,7 +11,6 @@
         error-text="Check your phone number"
         class="form-input"
       ></base-input>
-
       <base-input
         type="password"
         text="Password"
@@ -32,6 +32,7 @@
 import api from "../../api";
 import BaseInput from "@/components/BaseInput";
 import BaseRadio from "@/components/BaseRadio";
+import AlertBox from "@/components/AlertBox";
 
 export default {
   name: "SignIn",
@@ -40,7 +41,8 @@ export default {
   },
   components: {
     BaseInput,
-    BaseRadio
+    BaseRadio,
+    AlertBox
   },
   data() {
     return {
@@ -55,7 +57,8 @@ export default {
           error: false,
           pattern: /^([\+7])([0-9]+){10}/i
         }
-      }
+      },
+      errorMessage: "Something went wrong..."
     };
   },
   methods: {
@@ -63,7 +66,7 @@ export default {
       const { phone, password } = this.form;
       phone.error = !phone.pattern.test(phone.value);
       password.error = !password.pattern.test(password.value);
-
+      
       if (!phone.error && !password.error) {
         const user = await api.validate(phone.value, password.value);
         this.$store.commit("setToken", phone.value);
@@ -109,6 +112,7 @@ export default {
   width: 100%;
   height: 100%;
   padding: 1em;
+  position: relative;
 
   h3 {
     align-self: center;
