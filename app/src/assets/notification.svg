@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27.667" height="21" viewBox="0 0 27.667 21">
+  <g id="notification" transform="translate(-39.38 2.224)">
+    <g id="mail" transform="translate(39.38 -60.724)">
+      <g id="Group_38" data-name="Group 38" transform="translate(0 64)">
+        <g id="Group_37" data-name="Group 37">
+          <path id="Path_35" data-name="Path 35" d="M7.066,65.258c2.836,2.4,7.813,6.628,9.276,7.946a.864.864,0,0,0,1.25,0c1.464-1.319,6.441-5.545,9.278-7.948a.43.43,0,0,0,.061-.594A1.71,1.71,0,0,0,25.579,64H8.357a1.71,1.71,0,0,0-1.351.664A.43.43,0,0,0,7.066,65.258Z" transform="translate(-6.635 -64)" fill="#9c9c9c"/>
+          <path id="Path_36" data-name="Path 36" d="M20.417,126.452a.429.429,0,0,0-.459.062c-3.146,2.667-7.16,6.085-8.423,7.223a1.744,1.744,0,0,1-2.4,0c-1.346-1.213-5.855-5.046-8.422-7.222a.431.431,0,0,0-.709.328V137.67a1.724,1.724,0,0,0,1.722,1.722H18.944a1.724,1.724,0,0,0,1.722-1.722V126.842A.43.43,0,0,0,20.417,126.452Z" transform="translate(0 -123.892)" fill="#9c9c9c"/>
+        </g>
+      </g>
+    </g>
+    <g id="Notifications" transform="translate(54.434)">
+      <g id="Ellipse_51" data-name="Ellipse 51" transform="translate(-0.387 -0.224)" fill="#09a2ab" stroke="rgba(48,115,122,0.75)" stroke-width="2">
+        <circle cx="5.5" cy="5.5" r="5.5" stroke="none"/>
+        <circle cx="5.5" cy="5.5" r="6.5" fill="none"/>
+      </g>
+      <text id="_10" data-name="10" transform="translate(1.613 7.776)" fill="#fff" font-size="8" font-family="Gilroy-Light, Gilroy" font-weight="300"><tspan x="0" y="0">10</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import HomePageHeader from "./HomePageHeader";
+import HomePageHeader from "./HomePageHeader/index";
 import HomePageNews from "./HomePageNews";
 import HomePageStats from "./HomePageStats";
 import HomePageSuggestions from "./HomePageSuggestions";
@@ -40,5 +40,14 @@ export default {
   background-size: cover;
   display: flex;
   flex-direction: column;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 60%;
+  margin-left: 20%;
+  height: 100%;
+  gap: 30px;
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
-  <header class="header"></header>
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: "HomePageHeader"
+  name: "HeaderSearch"
 };
 </script>
 
