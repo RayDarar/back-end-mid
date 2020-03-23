@@ -68,6 +68,9 @@ export default {
 
 .header {
   background-color: $blackBackground;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }
 
 .top {

@@ -1,7 +1,7 @@
 <template>
   <article id="app">
     <transition :name="slideName" mode="out-in">
-      <router-view></router-view>
+      <router-view class="component"></router-view>
     </transition>
   </article>
 </template>
@@ -54,6 +54,9 @@ export default {
 #app {
   width: 100vw;
   height: 100vh;
+}
+
+.component {
   overflow: hidden;
 }
 
