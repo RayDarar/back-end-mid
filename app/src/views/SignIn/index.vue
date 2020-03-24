@@ -122,23 +122,9 @@ export default {
     width: 80%;
     margin: 0.5em;
   }
-
-  .gender-wrapper {
-    display: flex;
-    width: 70%;
-    justify-content: space-between;
-    margin: 1em;
-  }
-
   .sign-up {
     background-color: $accentBlue;
     margin-top: 1em;
-  }
-
-  .policy {
-    margin: 0.5em;
-    width: 75%;
-    font-size: 0.9rem;
   }
 }
 
@@ -155,4 +141,56 @@ export default {
     cursor: pointer;
   }
 }
+
+@media screen and (max-width: 840px) {
+  #sign-in {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 1fr 1fr 1fr 0.1fr;
+    background-image: url("../../assets/background-sign-in-mobile.png");
+  }
+
+  .title {
+    @include pos(1, 2);
+    font-size: 3.5rem;
+  }
+
+  .form {
+    @include pos(1, 3);
+    width: 60%;
+
+    h3,
+    .sign-up,
+    .form-input {
+      font-size: 1.2rem;
+    }
+  }
+
+  .redir {
+    @include pos(1, 4);
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .form {
+    width: 85%;
+  }
+
+  .redir {
+    font-size: 1rem;
+    margin: 2em;
+
+    &__link {
+      background-color: $accentBlue;
+      color: white;
+      border-radius: 10px;
+      padding: .5em 1em;
+    }
+  }
+}
+
 </style>

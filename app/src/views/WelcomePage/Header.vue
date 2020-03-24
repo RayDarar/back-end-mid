@@ -111,11 +111,15 @@ export default {
     position: relative;
     padding: 0.5em;
 
-    .nav-item__text {
+    &__text {
       white-space: nowrap;
       font-family: GilroyLight;
       color: $accentWhite;
       font-size: 1.2rem;
+    }
+
+    &__icon {
+      display: none;
     }
 
     &:hover {
@@ -123,9 +127,6 @@ export default {
     }
   }
   width: 100%;
-}
-
-@media screen and (max-width: 1440px) {
 }
 
 @media screen and (max-width: 840px) {
@@ -190,6 +191,7 @@ export default {
       }
 
       &__icon {
+        display: block;
         width: 20px;
         height: 20px;
         &_big {
