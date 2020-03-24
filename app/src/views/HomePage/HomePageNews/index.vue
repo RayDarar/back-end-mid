@@ -24,7 +24,7 @@ export default {
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 0.15fr auto;
+  grid-template-rows: 0.12fr auto;
   gap: 30px;
 }
 
