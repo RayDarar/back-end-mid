@@ -255,4 +255,60 @@ export default {
     cursor: pointer;
   }
 }
+
+@media screen and (max-width: 840px) {
+  #sign-up {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 1fr 1fr 1fr 0.1fr;
+    background-image: url("../../assets/background-sign-up-mobile.png");
+  }
+
+  .title {
+    @include pos(1, 2);
+    font-size: 3.5rem;
+  }
+
+  .form {
+    @include pos(1, 3);
+    width: 60%;
+
+    h3,
+    .sign-up,
+    .form-input {
+      font-size: 1.3rem;
+    }
+  }
+
+  .redir {
+    @include pos(1, 4);
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #sign-up {
+    overflow-y: auto;
+    height: 130%;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .form {
+    width: 90%;
+    margin: 0;
+
+    h3,
+    .sign-up,
+    .form-input {
+      font-size: 1rem;
+    }
+  }
+
+  .redir {
+    font-size: 1rem;
+    margin: 1.2em;
+  }
+}
 </style>
