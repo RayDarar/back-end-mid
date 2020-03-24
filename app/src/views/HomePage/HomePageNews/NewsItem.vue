@@ -170,4 +170,57 @@ export default {
     }
   }
 }
+@media screen and (max-width: 450px) {
+  .news-item {
+    .author-image {
+      display: none;
+    }
+
+    .content {
+      grid-template-columns: 1fr;
+      grid-template-rows: 0.1fr 1fr 0.2fr 0.4fr 0.1fr;
+
+      .heading {
+        @include pos(1, 1, 3, 1);
+        flex-direction: column;
+        align-items: flex-start;
+
+        .author-wrapper,
+        .status-wrapper {
+          .author {
+            margin-right: 1em;
+            font-size: 1rem;
+          }
+
+          .time {
+            color: $grayText;
+            margin-left: 1em;
+            font-size: 0.8rem;
+            margin-top: 0.1em;
+          }
+        }
+
+        .status-wrapper {
+          margin-top: 0.5em;
+        }
+      }
+
+      .post-image {
+        @include pos(1, 2);
+      }
+
+      .post-title {
+        @include pos(1, 3);
+      }
+
+      .post-text {
+        @include pos(1, 4);
+      }
+
+      .post-items-wrapper {
+        @include pos(1, 5);
+      }
+    }
+  }
+}
 </style>

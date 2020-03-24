@@ -16,7 +16,8 @@
 <script>
 export default {
   name: "NewsHeader",
-  components: {}
+  components: {},
+  computed: {}
 };
 </script>
 
@@ -47,5 +48,11 @@ export default {
 }
 .border-left {
   border-left: 2px solid lightgray;
+}
+
+@media screen and (max-width: 450px) {
+  .header {
+    display: none;
+  }
 }
 </style>

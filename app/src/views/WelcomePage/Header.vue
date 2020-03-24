@@ -33,7 +33,7 @@ export default {
       navItems: [
         {
           name: "Home",
-          image: "profile.svg"
+          image: "news.svg"
         },
         {
           name: "Profile",

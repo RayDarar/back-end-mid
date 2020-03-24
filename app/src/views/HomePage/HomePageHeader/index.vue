@@ -1,7 +1,10 @@
 <template>
   <header class="header">
     <div class="top">
-      <img src="@/assets/logo-text.png" alt="logo" class="logo" />
+      <picture class="logo">
+        <source srcset="@/assets/kokoko.svg" media="(max-width: 840px)" />
+        <img src="@/assets/logo-text.png" alt="logo" />
+      </picture>
       <header-search></header-search>
       <div class="account-wrapper">
         <alert-box :time="2000" ref="topBox"></alert-box>
@@ -24,13 +27,16 @@
           class="nav-item"
           :class="{ 'nav-item_selected': !index }"
           v-for="(item, index) in navItems"
-          :key="item"
-          @click="$refs.headBox.alert('Sorry, still in development')"
+          :key="item.name"
+          @click="call(index !== 7)"
         >
-          {{ item }}
-        </li>
-        <li class="nav-item" @click="exit">
-          Logout
+          <span class="nav-item__text">{{ item.name }}</span>
+          <img
+            :src="getImage(item.image)"
+            :alt="item.image"
+            class="nav-item__icon"
+            :class="{ 'nav-item__icon_big': index == 2 }"
+          />
         </li>
       </ul>
     </nav>
@@ -52,7 +58,40 @@ export default {
   },
   data() {
     return {
-      navItems: ["Home", "Profile", "Messages", "Friends", "Communities", "Map", "Eco projects"]
+      navItems: [
+        {
+          name: "News",
+          image: "news.svg"
+        },
+        {
+          name: "Profile",
+          image: "profile.svg"
+        },
+        {
+          name: "Messages",
+          image: "notification.svg"
+        },
+        {
+          name: "Friends",
+          image: "friend.svg"
+        },
+        {
+          name: "Communities",
+          image: "comment.svg"
+        },
+        {
+          name: "Map",
+          image: "pin.svg"
+        },
+        {
+          name: "Eco Projects",
+          image: "gear.svg"
+        },
+        {
+          name: "Logout",
+          image: "repost.svg"
+        }
+      ]
     };
   },
   methods: {
@@ -62,6 +101,14 @@ export default {
     exit() {
       this.$store.commit("exit");
       this.$router.push("/welcome");
+    },
+    call(flag) {
+      if (flag) this.alertTopBox();
+      else this.exit();
+    },
+    getImage(image) {
+      const images = require.context("@/assets/", false, /[\.png\.svg]$/);
+      return images("./" + image);
     }
   }
 };
@@ -78,6 +125,12 @@ export default {
   z-index: 1;
 }
 
+.logo {
+  * {
+    height: 48px;
+  }
+}
+
 .top {
   height: 72px;
   display: flex;
@@ -86,10 +139,6 @@ export default {
   align-items: center;
   margin-left: 20%;
   width: 60%;
-
-  .logo {
-    max-height: 80%;
-  }
 
   .account-wrapper {
     display: flex;
@@ -132,8 +181,17 @@ export default {
 
     .nav-item {
       margin: 1em;
-      font-size: 1.2rem;
-      color: $grayText;
+
+      &__text {
+        font-size: 1.2rem;
+        color: $grayText;
+        white-space: nowrap;
+        font-family: GilroyLight;
+      }
+
+      &__icon {
+        display: none;
+      }
 
       &:after {
         content: "";
@@ -168,6 +226,83 @@ export default {
   .nav .list {
     margin-left: 10%;
     width: 80%;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .top,
+  .nav .list {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .logo {
+    * {
+      height: 48px;
+    }
+  }
+
+  .top {
+    height: 68px;
+  }
+  .nav {
+    height: 68px;
+
+    .list {
+      .nav-item {
+        margin: 0.5em;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .logo {
+    * {
+      height: 34px;
+    }
+    margin-right: 3em;
+  }
+
+  .top {
+    justify-content: flex-start;
+    width: 200%;
+
+    .account-wrapper {
+      display: none;
+    }
+
+    .notification,
+    .configs {
+      display: none;
+    }
+  }
+  .nav {
+    align-self: flex-end;
+
+    .list {
+      justify-content: space-around;
+      align-items: center;
+      .nav-item {
+        padding: 0;
+        margin: 0em;
+        &__text {
+          display: none;
+        }
+
+        &__icon {
+          display: block;
+          width: 24px;
+          height: 24px;
+
+          &_big {
+            width: 32px;
+            height: 32px;
+          }
+        }
+      }
+    }
   }
 }
 </style>

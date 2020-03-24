@@ -75,4 +75,48 @@ export default {
     margin-left: 10%;
   }
 }
+
+@media screen and (max-width: 840px) {
+  .content {
+    width: 90%;
+    margin-left: 5%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.3fr 1fr;
+  }
+
+  .news {
+    @include pos(1, 2, 3, 2);
+  }
+
+  .stats {
+    @include pos(1, 1);
+  }
+
+  .suggestions {
+    @include pos(2, 1);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .content {
+    width: 96%;
+    margin-left: 2%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.3fr 0.3fr 1fr;
+  }
+
+  .news {
+    @include pos(1, 3);
+  }
+
+  .stats {
+    @include pos(1, 1);
+  }
+
+  .suggestions {
+    @include pos(1, 2);
+  }
+}
+
+
 </style>
