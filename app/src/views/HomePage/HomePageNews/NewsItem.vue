@@ -10,7 +10,9 @@
       <p class="post-text">
         {{ post.text }}
       </p>
-      <div class="post-items-wrapper"></div>
+      <div class="post-items-wrapper">
+        <icon-text></icon-text>
+      </div>
     </div>
   </article>
 </template>

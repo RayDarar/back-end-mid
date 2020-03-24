@@ -2,7 +2,7 @@
   <div class="stat-item">
     <img :src="getImage(image)" :alt="text" class="image" />
     <span class="text">{{ text }}</span>
-    <span class="data">{{ data }}</span>
+    <span class="data">{{ fixedData }}</span>
   </div>
 </template>
 
@@ -18,6 +18,14 @@ export default {
     getImage(image) {
       const images = require.context("@/assets/", false, /\.svg$/);
       return images("./" + image);
+    }
+  },
+  computed: {
+    fixedData() {
+      let fixed = this.data.toFixed(2);
+      if (fixed.length <= 6) return fixed;
+      fixed = +fixed;
+      return (fixed / 1000).toFixed(2) + "K";
     }
   }
 };
