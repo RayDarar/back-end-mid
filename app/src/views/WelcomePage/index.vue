@@ -167,4 +167,41 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 450px) {
+  .content {
+    margin-left: 5%;
+    width: 90%;
+
+    .title {
+      font-size: 3rem;
+    }
+
+    .text {
+      font-size: 1rem;
+    }
+
+    .sign-up,
+    .sign-in {
+      font-size: 1rem;
+    }
+
+    .polona-wrapper {
+      @include pos(3, 2);
+
+      .polona {
+        $margin: 30%;
+        left: -$margin;
+        top: $margin;
+        max-width: 250%;
+      }
+
+      .plastic {
+        max-width: 120%;
+        bottom: 10%;
+        left: -100%;
+      }
+    }
+  }
+}
 </style>

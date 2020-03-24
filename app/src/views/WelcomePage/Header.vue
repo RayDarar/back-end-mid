@@ -1,16 +1,25 @@
 <template>
   <header id="header">
-    <img src="@/assets/logo-text.png" alt="logo" class="logo" />
+    <picture class="logo">
+      <source srcset="@/assets/kokoko.svg" media="(max-width: 450px)" />
+      <img src="@/assets/logo-text.png" alt="logo" />
+    </picture>
     <input type="text" class="search" placeholder="Search" />
     <nav class="nav">
       <li
         class="nav-item"
-        v-for="item in navItems"
+        v-for="(item, index) in navItems"
         :key="item.name"
         :title="`to ${item.name}`"
         @click="$router.push('/')"
       >
-        {{ item.name }}
+        <span class="nav-item__text">{{ item.name }}</span>
+        <img
+          :src="getImage(item.image)"
+          :alt="item.image"
+          class="nav-item__icon"
+          :class="{ 'nav-item__icon_big': index == 2 }"
+        />
       </li>
     </nav>
   </header>
@@ -24,34 +33,40 @@ export default {
       navItems: [
         {
           name: "Home",
-          ref: ""
+          image: "profile.svg"
         },
         {
           name: "Profile",
-          ref: ""
+          image: "profile.svg"
         },
         {
           name: "Messages",
-          ref: ""
+          image: "notification.svg"
         },
         {
           name: "Friends",
-          ref: ""
+          image: "friend.svg"
         },
         {
           name: "Communities",
-          ref: ""
+          image: "comment.svg"
         },
         {
           name: "Map",
-          ref: ""
+          image: "pin.svg"
         },
         {
           name: "Eco Projects",
-          ref: ""
+          image: "gear.svg"
         }
       ]
     };
+  },
+  methods: {
+    getImage(image) {
+      const images = require.context("@/assets/", false, /[\.png\.svg]$/);
+      return images("./" + image);
+    }
   }
 };
 </script>
@@ -71,6 +86,10 @@ export default {
 .logo {
   max-height: 80%;
   margin-right: 1em;
+
+  * {
+    height: 50px;
+  }
 }
 
 .search {
@@ -85,16 +104,19 @@ export default {
 
   &-item {
     margin: 0.5em;
-    font-family: GilroyLight;
-    color: $accentWhite;
-    font-size: 1.2rem;
     opacity: 0.8;
     transition: opacity 0.3s;
     cursor: pointer;
 
     position: relative;
     padding: 0.5em;
-    white-space: nowrap;
+
+    .nav-item__text {
+      white-space: nowrap;
+      font-family: GilroyLight;
+      color: $accentWhite;
+      font-size: 1.2rem;
+    }
 
     &:hover {
       opacity: 1;
@@ -125,6 +147,9 @@ export default {
 
   .logo {
     @include pos(1, 1);
+    * {
+      height: 45px;
+    }
   }
 
   .search {
@@ -138,6 +163,41 @@ export default {
   .nav {
     @include pos(1, 2, 3, 2);
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #header {
+    padding: 0.5em;
+  }
+
+  .logo {
+    * {
+      height: 34px;
+    }
+  }
+
+  .nav {
+    align-self: flex-end;
+    justify-content: space-around;
+    align-items: center;
+
+    &-item {
+      padding: 0;
+      margin: 0em;
+      &__text {
+        display: none;
+      }
+
+      &__icon {
+        width: 20px;
+        height: 20px;
+        &_big {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
   }
 }
 </style>
