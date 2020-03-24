@@ -30,9 +30,6 @@
 
 <script>
 import api from "../../api";
-import BaseInput from "@/components/BaseInput";
-import BaseRadio from "@/components/BaseRadio";
-import AlertBox from "@/components/AlertBox";
 
 export default {
   name: "SignIn",
@@ -42,11 +39,7 @@ export default {
     }
     document.title = "EcoBeko | Sign In";
   },
-  components: {
-    BaseInput,
-    BaseRadio,
-    AlertBox
-  },
+  components: {},
   data() {
     return {
       form: {

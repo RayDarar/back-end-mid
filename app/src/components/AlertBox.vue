@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-left">
-    <div v-if="show" class="alert-box">
+    <div v-show="show" class="alert-box">
       <span class="text">
         {{ message }}
       </span>

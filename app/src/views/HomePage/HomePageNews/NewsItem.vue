@@ -1,13 +1,42 @@
 <template>
   <article class="news-item">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque unde, eum odit accusantium quae
-    sapiente, officiis soluta deserunt facilis, non cupiditate architecto harum corrupti ea impedit
-    sit. Eum, incidunt assumenda.
+    <img :src="getImage(author.image)" alt="author-image" class="author-image" />
+    <div class="content">
+      <header class="heading"></header>
+      <img :src="getImage(post.image)" alt="post-image" class="post-image" />
+      <h3 class="post-title">
+        {{ post.title }}
+      </h3>
+      <p class="post-text">
+        {{ post.text }}
+      </p>
+      <div class="post-items-wrapper"></div>
+    </div>
   </article>
 </template>
 
 <script>
 export default {
-  name: "NewsItem"
+  name: "NewsItem",
+  props: {
+    author: Object,
+    post: Object
+  },
+  methods: {
+    getImage(image) {
+      const images = require.context("@/assets/", false, /\.png$/);
+      return images("./" + image);
+    }
+  }
 };
 </script>
+
+<style lang="scss" scoped>
+@import "../../../scss/_globals.scss";
+@import "../../../scss/_base.scss";
+
+.news-item {
+  display: flex;
+  flex-direction: row;
+}
+</style>

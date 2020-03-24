@@ -1,29 +1,22 @@
 <template>
   <header class="header" @click="$refs.box.alert(`Sorry, that's wont't work for now`)">
     <alert-box :time="2000" ref="box"></alert-box>
-    <div class="item border-right">
-      <img src="@/assets/share.svg" alt="share-icon" />
-      <span>Share an update</span>
-    </div>
-    <div class="item">
-      <img src="@/assets/image.svg" alt="image-icon" />
-      <span>Upload a photo</span>
-    </div>
-    <div class="item border-left">
-      <img src="@/assets/pen.svg" alt="share-icon" />
-      <span>Write an article</span>
-    </div>
+    <icon-text image="share.svg" size="22px" class="item border-right">
+      Share an update
+    </icon-text>
+    <icon-text image="image.svg" size="22px" class="item">
+      Upload a photo
+    </icon-text>
+    <icon-text image="pen.svg" size="22px" class="item border-left">
+      Write an article
+    </icon-text>
   </header>
 </template>
 
 <script>
-import AlertBox from "@/components/AlertBox";
-
 export default {
   name: "NewsHeader",
-  components: {
-    AlertBox
-  }
+  components: {}
 };
 </script>
 
@@ -39,22 +32,12 @@ export default {
   position: relative;
 }
 .item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
   cursor: pointer;
+  color: $grayText;
+  font-size: 1.1rem;
+  transition: color 0.3s;
 
-  span {
-    color: $grayText;
-    font-size: 1.1rem;
-    margin: 1em;
-    transition: color 0.3s;
-  }
-
-  &:hover span {
+  &:hover {
     color: black;
   }
 }

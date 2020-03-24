@@ -21,13 +21,11 @@
 
 <script>
 import StatItem from "./StatItem";
-import AlertBox from "@/components/AlertBox";
 
 export default {
   name: "HomePageStats",
   components: {
-    StatItem,
-    AlertBox
+    StatItem
   }
 };
 </script>

@@ -35,14 +35,12 @@
 </template>
 
 <script>
-import AlertBox from "@/components/AlertBox";
 import HeaderSearch from "./HeaderSearch";
 
 export default {
   name: "HomePageHeader",
   components: {
-    HeaderSearch,
-    AlertBox
+    HeaderSearch
   },
   computed: {
     user() {

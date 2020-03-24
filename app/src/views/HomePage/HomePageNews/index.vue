@@ -1,8 +1,8 @@
 <template>
   <section class="news">
     <news-header class="header"></news-header>
-    <news-item class="item"></news-item>
-    <news-item class="item"></news-item>
+    <!-- <news-item class="item"></news-item>
+    <news-item class="item"></news-item> -->
   </section>
 </template>
 
@@ -24,7 +24,7 @@ export default {
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 0.12fr auto;
+  grid-template-rows: 0.085fr auto;
   gap: 30px;
 }
 

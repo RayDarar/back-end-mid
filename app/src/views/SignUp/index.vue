@@ -80,9 +80,6 @@ Terms of Use and Privacy Policy."
 
 <script>
 import api from "../../api";
-import BaseInput from "@/components/BaseInput";
-import BaseRadio from "@/components/BaseRadio";
-import AlertBox from "@/components/AlertBox";
 
 export default {
   name: "SignUp",
@@ -92,11 +89,7 @@ export default {
     }
     document.title = "EcoBeko | Sign Up";
   },
-  components: {
-    BaseInput,
-    BaseRadio,
-    AlertBox
-  },
+  components: {},
   methods: {
     async signUp() {
       const { name, surname, phone, password, confPassword, gender, birthday, policy } = this.form;

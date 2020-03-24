@@ -8,13 +8,11 @@
 
 <script>
 import SugItem from "./SugItem";
-import AlertBox from "@/components/AlertBox";
 
 export default {
   name: "HomePageSuggestions",
   components: {
-    SugItem,
-    AlertBox
+    SugItem
   },
   methods: {
     alertBox() {
