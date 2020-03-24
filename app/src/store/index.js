@@ -5,7 +5,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    token: null
+    token: null,
+    news: {
+      search: ""
+    }
   },
   mutations: {
     setToken(state, token) {
@@ -15,6 +18,9 @@ export default new Vuex.Store({
     exit(state) {
       state.token = null;
       localStorage.removeItem("token");
+    },
+    newQuery(state, query) {
+      state.news.search = query;
     }
   },
   getters: {
