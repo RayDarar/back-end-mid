@@ -18,7 +18,7 @@ export default {
     }
   },
   methods: {
-    alert(message="Something went wrong...") {
+    alert(message = "Something went wrong...") {
       this.message = message;
       this.show = true;
       setTimeout(() => {
@@ -42,6 +42,7 @@ export default {
 .alert-box {
   width: 300px;
   border-radius: 15px;
+  border: none;
   background-color: rgba($color: darkred, $alpha: 0.7);
   padding: 1em 1.5em;
   position: absolute;

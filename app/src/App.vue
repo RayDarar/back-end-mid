@@ -25,6 +25,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./scss/_globals.scss";
+
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 @font-face {
@@ -39,6 +41,14 @@ export default {
 
 ::root {
   font-size: 100%;
+}
+
+*::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $accentBlue;
 }
 
 * {

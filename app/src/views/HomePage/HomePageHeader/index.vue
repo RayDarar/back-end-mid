@@ -114,6 +114,7 @@ export default {
 .nav {
   height: 72px;
   background-color: white;
+  border: none;
 
   .list {
     list-style: none;
