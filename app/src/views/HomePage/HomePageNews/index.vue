@@ -1,8 +1,7 @@
 <template>
   <section class="news">
     <news-header class="header"></news-header>
-    <!-- <news-item class="item"></news-item>
-    <news-item class="item"></news-item> -->
+    <news-item class="item" :post="post"></news-item>
   </section>
 </template>
 
@@ -15,9 +14,28 @@ export default {
   components: {
     NewsHeader,
     NewsItem
+  },
+  data() {
+    return {
+      post: {
+        authorImage: "alina.png",
+        authorName: "Alina Danaeva",
+        authorStatus: "Follow",
+        time: new Date(),
+        image: "welcome.gif",
+        title: "Welcome To Eco Beko!",
+        text: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto ipsa reprehenderit
+    molestias quam magni. Dolore odio rerum itaque deleniti error corrupti voluptates laudantium
+    nostrum incidunt, ipsa animi minus. Est, soluta, incidunt aperiam ullam odio minima repellat
+    unde eveniet, dolores consequuntur quas iusto ducimus omnis provident? Tempora nemo asperiores
+    ut qui.`,
+        likes: 340,
+        comments: 0,
+        reposts: 0
+      }
+    };
   }
 };
-
 </script>
 <style lang="scss" scoped>
 .news {
