@@ -39,7 +39,7 @@ export default {
   src: url("./assets/fonts/Gilroy-ExtraBold.otf");
 }
 
-::root {
+html {
   font-size: 100%;
 }
 
@@ -71,18 +71,12 @@ export default {
 }
 
 @media screen and (max-width: 1440px) {
-  ::root {
+  html {
     font-size: 90%;
   }
 }
 
-.appear {
-  opacity: 0;
-}
-.appear-active {
-  transition: opacity 0.5s ease-in;
-}
-.appear-to {
-  opacity: 1;
+@media screen and (max-width: 1280px) {
+  
 }
 </style>

@@ -84,12 +84,14 @@ export default {
 
   .sign-up {
     background-color: $accentBlue;
+    white-space: nowrap;
   }
 
   .sign-in {
     background-color: transparent;
     position: relative;
     @include pos(2, 5);
+    white-space: nowrap;
 
     &:before {
       content: "";
@@ -127,6 +129,42 @@ export default {
   .content {
     margin-left: 10%;
     width: 80%;
+  }
+}
+@media screen and (max-width: 840px) {
+  .content {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.3fr 1fr 0.8fr 0.5fr 1fr;
+
+    .title {
+      font-size: 5rem;
+    }
+
+    .text {
+      font-size: 1.6rem;
+    }
+
+    .sign-in,
+    .sign-up {
+      font-size: 1.3rem;
+    }
+
+    .polona-wrapper {
+      @include pos(3, 2);
+
+      .polona {
+        $margin: 5%;
+        left: $margin;
+        top: $margin;
+        max-width: 200%;
+      }
+
+      .plastic {
+        max-width: 100%;
+        bottom: 10%;
+        left: -80%;
+      }
+    }
   }
 }
 </style>
