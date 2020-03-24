@@ -29,6 +29,9 @@
         >
           {{ item }}
         </li>
+        <li class="nav-item" @click="exit">
+          Logout
+        </li>
       </ul>
     </nav>
   </header>
@@ -55,6 +58,10 @@ export default {
   methods: {
     alertTopBox() {
       this.$refs.topBox.alert("Sorry, still in development");
+    },
+    exit() {
+      this.$store.commit("exit");
+      this.$router.push("/welcome");
     }
   }
 };
