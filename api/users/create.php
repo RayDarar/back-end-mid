@@ -5,7 +5,7 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-include_once "../../helpers/Connection.php";
+include_once "../utils/Connection.php";
 
 $body = json_decode(file_get_contents("php://input"), true);
 
