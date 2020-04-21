@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:80/eco-beko/api"
+  baseURL: "http://localhost:3000/api",
 });
 
 export default {
@@ -16,7 +16,7 @@ export default {
       surname,
       gender,
       password,
-      birthday: `${day}-${month}-${year}`
+      birthday: `${day}-${month}-${year}`,
     };
 
     return await api.post("/users/create.php", body);
@@ -26,9 +26,9 @@ export default {
 
     const body = {
       phone,
-      password
+      password,
     };
 
     return await api.post("/users/validate.php", body);
-  }
+  },
 };
