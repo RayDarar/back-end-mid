@@ -22,6 +22,10 @@ const api = axios.create({
 
 5. Serve `api/` and `static/` folders with your php server
 
+Assuming you are using xampp installed on /opt/lampp: `cp -r api static /your/static/files/folder`
+
+6. Run `eco_beko.sql` at your mysql database
+
 ## Compile web-app for development
 
 In `app/` issue `yarn serve`. (Do not forget to run your php server that serves `api/` folder)
