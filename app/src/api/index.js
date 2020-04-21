@@ -32,6 +32,10 @@ export default {
     return await api.post("/users/validate.php", body);
   },
   async getUsers() {
-    return await api.get("/users/get.php");
+    let result = await api.get("/users/get.php");
+    return result.data.data.map((item) => {
+      item.gender = item.gender == "1" ? "male" : "female";
+      return item;
+    });
   },
 };

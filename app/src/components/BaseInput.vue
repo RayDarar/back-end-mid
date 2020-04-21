@@ -36,7 +36,12 @@ export default {
       default: "Correct the field"
     }
   },
-  inheritAttrs: false
+  inheritAttrs: false,
+  watch: {
+    $attrs(newAttrs, oldAttrs) {
+      this.value = newAttrs.value;
+    }
+  }
 };
 </script>
 

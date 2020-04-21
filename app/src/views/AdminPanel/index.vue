@@ -43,6 +43,9 @@ export default {
 }
 
 .tab {
-  margin: 1em;
+  margin: 2em;
+  box-shadow: 0px 0px 10px 10px rgba($color: black, $alpha: 0.03);
+  border-radius: 10px;
+  padding: 2em 3em;
 }
 </style>
