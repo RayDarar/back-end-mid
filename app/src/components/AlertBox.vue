@@ -1,6 +1,13 @@
 <template>
   <transition name="slide-left">
-    <div v-show="show" class="alert-box">
+    <div
+      v-show="show"
+      class="alert-box"
+      :class="{
+        'alert-box_error': error,
+        'alert-box_good': !error,
+      }"
+    >
       <span class="text">
         {{ message }}
       </span>
@@ -14,24 +21,26 @@ export default {
   props: {
     time: {
       type: Number,
-      default: 1000
-    }
+      default: 1000,
+    },
   },
   methods: {
-    alert(message = "Something went wrong...") {
+    alert(message = "Something went wrong...", error = true) {
       this.message = message;
       this.show = true;
+      this.error = error;
       setTimeout(() => {
         this.show = false;
       }, this.time);
-    }
+    },
   },
   data() {
     return {
       show: false,
-      message: ""
+      message: "",
+      error: true,
     };
-  }
+  },
 };
 </script>
 
@@ -43,10 +52,17 @@ export default {
   width: 300px;
   border-radius: 15px;
   border: none;
-  background-color: rgba($color: darkred, $alpha: 0.7);
   padding: 1em 1.5em;
   position: absolute;
   top: 0;
+}
+
+.alert-box_error {
+  background-color: rgba($color: darkred, $alpha: 0.7);
+}
+
+.alert-box_good {
+  background-color: rgba($color: darkgreen, $alpha: 0.7);
 }
 
 .text {

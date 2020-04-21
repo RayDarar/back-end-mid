@@ -37,10 +37,17 @@ export default {
     return {
       users: [],
       selected: {},
+      intervalId: 0,
     };
   },
   created() {
     this.fetch();
+    this.intervalId = setInterval(() => {
+      this.fetch();
+    }, 1000);
+  },
+  beforeDestroy() {
+    clearInterval(this.intervalId);
   },
   components: {
     AdminUsersUser,

@@ -38,4 +38,21 @@ export default {
       return item;
     });
   },
+  async updateUser(id, name, surname, phone) {
+    const result = await api.put("/users/update.php", {
+      id,
+      name,
+      surname,
+      phone,
+    });
+
+    return result.status == 200;
+  },
+  async deleteUser(id) {
+    const result = await api.delete("/users/delete.php", {
+      id,
+    });
+
+    return result.status == 200;
+  },
 };
