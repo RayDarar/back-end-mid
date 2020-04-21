@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000/eco-beko/api",
+  baseURL: "http://localhost:80/api",
 });
 
 export default {
