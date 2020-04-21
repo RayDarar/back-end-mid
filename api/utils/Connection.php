@@ -28,6 +28,10 @@ class Connection {
     mysqli_query($this->connection, $query);
   }
 
+  function update($query) {
+    mysqli_query($this->connection, $query);
+  }
+
   function close() {
     mysqli_close($this->connection);
   }

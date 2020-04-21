@@ -9,3 +9,24 @@ Content-Type: application/json
 ###
 
 GET http://localhost/api/users/get.php HTTP/1.1
+
+###
+
+PUT http://localhost/api/users/update.php HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 12,
+  "name": "Test",
+  "surname": "User",
+  "phone": "77086144677"
+}
+
+###
+
+DELETE http://localhost/api/users/delete.php HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 16
+}
