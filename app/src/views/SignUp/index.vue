@@ -122,8 +122,12 @@ export default {
         } else {
           // the most hardcoded piece of doom, that I have ever done (sorry future me)
           const user = (await api.validate(phone.value, password.value)).data;
-          this.$store.commit("setToken", user);
-          this.$router.push("/");
+          if (user === phone.value.substr(1)) {
+            this.$store.commit("setToken", user);
+            this.$router.push("/");
+          } else {
+            this.$refs.box.alert("Sorry, something went wrong on the server");
+          }
         }
       }
     },
@@ -131,7 +135,7 @@ export default {
       for (const item of items) {
         item.error = !item.pattern.test(item.value);
       }
-    }
+    },
   },
   data() {
     return {
@@ -139,42 +143,42 @@ export default {
         name: {
           value: "",
           error: false,
-          pattern: /[a-z-]+/i
+          pattern: /[a-z-]+/i,
         },
         surname: {
           value: "",
           error: false,
-          pattern: /[a-z-]/i
+          pattern: /[a-z-]/i,
         },
         phone: {
           value: "+7",
           error: false,
-          pattern: /^([\+7])([0-9]+){10}/i
+          pattern: /^([\+7])([0-9]+){10}/i,
         },
         gender: {
           value: "",
-          error: false
+          error: false,
         },
         birthday: {
           value: "",
-          error: false
+          error: false,
         },
         password: {
           value: "",
           error: false,
-          pattern: /(?=.{8,})/i
+          pattern: /(?=.{8,})/i,
         },
         confPassword: {
           value: "",
-          error: false
+          error: false,
         },
         policy: {
           value: "",
-          error: false
-        }
-      }
+          error: false,
+        },
+      },
     };
-  }
+  },
 };
 </script>
 

@@ -31,4 +31,7 @@ export default {
 
     return await api.post("/users/validate.php", body);
   },
+  async getUsers() {
+    return await api.get("/users/get.php");
+  },
 };

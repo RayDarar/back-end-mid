@@ -46,14 +46,14 @@ export default {
         password: {
           value: "",
           error: false,
-          pattern: /(?=.{8,})/i
+          pattern: /(?=.{8,})/i,
         },
         phone: {
           value: "+7",
           error: false,
-          pattern: /^([\+7])([0-9]+){10}/i
-        }
-      }
+          pattern: /^([\+7])([0-9]+){10}/i,
+        },
+      },
     };
   },
   methods: {
@@ -64,16 +64,20 @@ export default {
 
       if (!phone.error && !password.error) {
         const response = await api.validate(phone.value, password.value);
+
         if (response.data.err) {
-          this.$refs.box.alert(response.data.err);
-        } else {
+          this.$refs.box.alert(response.data.err || response.data);
+        } else if (response.data.phone === phone.value.substr(1)) {
           this.$store.commit("setToken", response.data);
 
-          this.$router.push("/");
+          if (response.data.name === "admin") {
+            return this.$router.push("/admin-panel");
+          }
+          return this.$router.push("/");
         }
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -188,9 +192,8 @@ export default {
       background-color: $accentBlue;
       color: white;
       border-radius: 10px;
-      padding: .5em 1em;
+      padding: 0.5em 1em;
     }
   }
 }
-
 </style>

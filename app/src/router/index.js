@@ -9,25 +9,35 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
-      component: () => import("@/views/HomePage/index")
+      component: () => import("@/views/HomePage/index"),
     },
     {
       path: "/welcome",
-      component: () => import("@/views/WelcomePage/index")
+      component: () => import("@/views/WelcomePage/index"),
     },
     {
       path: "/welcome/sign-in",
-      component: () => import("@/views/SignIn/index")
+      component: () => import("@/views/SignIn/index"),
     },
     {
       path: "/welcome/sign-up",
-      component: () => import("@/views/SignUp/index")
+      component: () => import("@/views/SignUp/index"),
     },
     {
       path: "/test",
-      component: () => import("@/views/Test")
-    }
-  ]
+      component: () => import("@/views/Test"),
+    },
+    {
+      path: "/admin-panel",
+      component: () => import("@/views/AdminPanel/index"),
+      children: [
+        {
+          path: "users",
+          component: () => import("@/views/AdminPanel/AdminUsers"),
+        },
+      ],
+    },
+  ],
 });
 
 export default router;
