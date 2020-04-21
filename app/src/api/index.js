@@ -55,4 +55,10 @@ export default {
 
     return result.status == 200;
   },
+  async countUsers() {
+    return await api.get("/stats/count.php");
+  },
+  async generateMatrix() {
+    return await api.get("stats/generate.php");
+  },
 };

@@ -2,6 +2,7 @@
   <section id="admin-panel">
     <nav class="tab-headers">
       <router-link class="header-item" to="/admin-panel/users">Users</router-link>
+      <router-link class="header-item" to="/admin-panel/stats">Stats</router-link>
     </nav>
     <router-view class="tab"></router-view>
   </section>
@@ -34,6 +35,7 @@ export default {
 
 .header-item {
   font-size: 1.5rem;
+  margin: 1em;
   text-decoration: none;
   color: black;
 

@@ -35,6 +35,10 @@ const router = new VueRouter({
           path: "users",
           component: () => import("@/views/AdminPanel/AdminUsers"),
         },
+        {
+          path: "stats",
+          component: () => import("@/views/AdminPanel/AdminStats"),
+        },
       ],
     },
   ],
