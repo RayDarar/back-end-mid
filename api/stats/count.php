@@ -1,21 +1,24 @@
 <?php
+header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: DELETE");
+header("Access-Control-Allow-Methods: GET");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 include_once "../utils/Connection.php";
 
-$body = json_decode(file_get_contents("php://input"), true);
-
 $db = new Connection("eco_beko");
 $db->connect();
 
-$id = $body["id"];
+$result = $db->execute("SELECT * FROM `users`");
 
-$result = $db->execute(
-  "DELETE FROM `users`
-  WHERE `id`=$id");
+$count = 0;
+
+while($row = mysqli_fetch_row($result)) {
+  $count += 1;
+}
+
+echo json_encode(array("count" => $count));
 
 $db->close();
 ?>

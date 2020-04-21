@@ -1,0 +1,5 @@
+GET http://localhost/api/stats/count.php HTTP/1.1
+
+###
+
+GET http://localhost/api/stats/generate.php HTTP/1.1

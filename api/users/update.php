@@ -16,7 +16,7 @@ $first_name = $body["name"];
 $last_name = $body["surname"];
 $id = $body["id"];
 
-$result = $db->update(
+$result = $db->execute(
   "UPDATE `users`
   SET 
   `phone_number`='$phone_number',

@@ -25,11 +25,11 @@ class Connection {
   }
 
   function insert($query) {
-    mysqli_query($this->connection, $query);
+    return mysqli_query($this->connection, $query);
   }
 
-  function update($query) {
-    mysqli_query($this->connection, $query);
+  function execute($query) {
+    return mysqli_query($this->connection, $query);
   }
 
   function close() {
