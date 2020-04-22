@@ -25,7 +25,7 @@ $result = $db->select(
 
 if ($result["rows"]) echo json_encode(array("err" => "user exists"));
 else {
-  $db->insert(
+  $response = $db->insert(
     "INSERT INTO 
     users(phone_number, first_name, last_name, gender, password, birthday) 
     VALUES ('$phone_number', '$first_name', '$last_name', $gender, '$password', STR_TO_DATE('$birthday', '%d-%m-%Y'))");

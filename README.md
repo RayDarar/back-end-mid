@@ -40,3 +40,115 @@ Assuming you are using xampp installed on /opt/lampp: `cp -r php-server/api stat
 ## Compile web-app for development
 
 In `app/` issue `yarn serve`. (Do not forget to run your php server that serves `api/` folder)
+
+## API
+
+### PHP server
+
+#### (GET) api/users/get.php
+
+**Response example:**
+
+```json
+{
+  "rows": 4,
+  "data": [
+    // array of users
+    {
+      "id": "12",
+      "first_name": "Test",
+      "last_name": "Test",
+      "gender": "1",
+      "password": "f3823903b2dd6e35243b1bbe5a14f651",
+      "birthday": "2000-12-12",
+      "phone_number": "77086144677"
+    }
+  ]
+}
+```
+
+#### (POST) api/users/validate.php
+
+**Request Example:**
+
+```json
+{
+  "phone": "77086144677",
+  "password": "awdawdawd"
+}
+```
+
+**Response Example-1:**
+
+```json
+{
+  "err": "password is incorrect"
+}
+```
+
+**Response Example-2:**
+
+```json
+{
+  "id": "12",
+  "name": "Test",
+  "surname": "Test",
+  "phone": "77086144677",
+  "birthday": "2000-12-12",
+  "gender": "male"
+}
+```
+
+#### (POST) api/users/create.php
+
+**Request Example:**
+
+```json
+{
+  "name": "Test",
+  "surname": "Test",
+  "phone": "77086144677",
+  "birthday": "2000-12-12",
+  "gender": "male",
+  "password": "awdawdawd"
+}
+```
+
+**Response Example-1:**
+
+```json
+{
+  "err": "user exists"
+}
+```
+
+**Response Example-2:**
+
+```json
+{
+  "status": "success"
+}
+```
+
+#### (PUT) api/users/update.php
+
+**Request Example:**
+
+```json
+{
+  "id": 17,
+  "name": "Test",
+  "surname": "User",
+  "phone": "77086144676"
+}
+```
+
+#### (DELETE) api/users/delete.php
+
+**Request Example:**
+
+```json
+{
+  "id": 17
+}
+```
