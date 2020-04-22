@@ -9,10 +9,12 @@ Project is build using Vue and PHP as REST Api back-end.
 
 ## Project setup
 
+### Prepare web-app
+
 1. Go to `app/` folder.
 2. Install dependencies using `yarn` or `npm install`.
 3. Issue `yarn build` or `npm run build` commands to build static files at `static/` folder;
-4. Go `api/index.js` and replace baseUrl for your api requests.
+4. Go `app/src/api/index.js` and replace baseUrl for your api requests.
 
 ```js
 const api = axios.create({
@@ -20,11 +22,14 @@ const api = axios.create({
 });
 ```
 
-5. Serve `api/` and `static/` folders with your php server
+### In Case of PHP server
 
-Assuming you are using xampp installed on /opt/lampp: `cp -r api static/* /your/static/files/folder`
+1. Serve `php-server/api/` and `static/` folders with your php server
 
-6. Run `eco_beko.sql` at your mysql database
+Assuming you are using xampp installed on /opt/lampp: `cp -r php-server/api static/* /opt/lampp/htdocs/`
+
+2. Run apache and mysql server
+3. Run `eco_beko.sql` at your mysql database
 
 ## Compile web-app for development
 

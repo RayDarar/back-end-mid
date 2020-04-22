@@ -1,1 +1,1 @@
-sudo cp -r api static/* /opt/lampp/htdocs/
+sudo cp -r php-server/api static/* /opt/lampp/htdocs/
