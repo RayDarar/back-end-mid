@@ -43,9 +43,9 @@ In `app/` issue `yarn serve`. (Do not forget to run your php server that serves 
 
 ## API
 
-### PHP server
+For php server, add .php extension to each route
 
-#### (GET) api/users/get.php
+### (GET) api/users/get
 
 **Response example:**
 
@@ -55,11 +55,10 @@ In `app/` issue `yarn serve`. (Do not forget to run your php server that serves 
   "data": [
     // array of users
     {
-      "id": "12",
+      "id": 12,
       "first_name": "Test",
       "last_name": "Test",
-      "gender": "1",
-      "password": "f3823903b2dd6e35243b1bbe5a14f651",
+      "gender": 1,
       "birthday": "2000-12-12",
       "phone_number": "77086144677"
     }
@@ -67,7 +66,7 @@ In `app/` issue `yarn serve`. (Do not forget to run your php server that serves 
 }
 ```
 
-#### (POST) api/users/validate.php
+### (POST) api/users/validate
 
 **Request Example:**
 
@@ -99,7 +98,7 @@ In `app/` issue `yarn serve`. (Do not forget to run your php server that serves 
 }
 ```
 
-#### (POST) api/users/create.php
+### (POST) api/users/create
 
 **Request Example:**
 
@@ -130,7 +129,7 @@ In `app/` issue `yarn serve`. (Do not forget to run your php server that serves 
 }
 ```
 
-#### (PUT) api/users/update.php
+### (PUT) api/users/update
 
 **Request Example:**
 
@@ -143,7 +142,7 @@ In `app/` issue `yarn serve`. (Do not forget to run your php server that serves 
 }
 ```
 
-#### (DELETE) api/users/delete.php
+### (DELETE) api/users/delete
 
 **Request Example:**
 
@@ -153,7 +152,7 @@ In `app/` issue `yarn serve`. (Do not forget to run your php server that serves 
 }
 ```
 
-#### (GET) api/stats/count.php
+### (GET) api/stats/count
 
 **Response Example:**
 
@@ -163,148 +162,7 @@ In `app/` issue `yarn serve`. (Do not forget to run your php server that serves 
 }
 ```
 
-#### (GET) api/stats/generate.php
-
-**Response Example:**
-
-```json
-{
-  "matrix": [
-    [
-      // data
-    ]
-  ]
-}
-```
-
-### Django server
-
-#### (GET) /api/users/get
-
-**Response Example:**
-
-```json
-[
-  {
-    "pk": 1,
-    "fields": {
-      "first_name": "Ansar",
-      "last_name": "Ryspekov",
-      "gender": 1,
-      "birthday": "2020-04-22",
-      "phone_number": "77086144672"
-    }
-  },
-  {
-    "pk": 2,
-    "fields": {
-      "first_name": "Tomiris",
-      "last_name": "Ryspekova",
-      "gender": 0,
-      "birthday": "2020-04-22",
-      "phone_number": "77086144670"
-    }
-  }
-]
-```
-
-#### (POST) api/users/validate
-
-**Request Example:**
-
-```json
-{
-  "phone": "77086144677",
-  "password": "awdawdawd"
-}
-```
-
-**Response Example-1:**
-
-```json
-{
-  "err": "password is incorrect"
-}
-```
-
-**Response Example-2:**
-
-```json
-{
-  "id": "12",
-  "name": "Test",
-  "surname": "Test",
-  "phone": "77086144677",
-  "birthday": "2000-12-12",
-  "gender": "male"
-}
-```
-
-#### (POST) api/users/create
-
-**Request Example:**
-
-```json
-{
-  "name": "Test",
-  "surname": "Test",
-  "phone": "77086144677",
-  "birthday": "2000-12-12",
-  "gender": 1,
-  "password": "awdawdawd"
-}
-```
-
-**Response Example-1:**
-
-```json
-{
-  "err": "user exists"
-}
-```
-
-**Response Example-2:**
-
-```json
-{
-  "status": "success"
-}
-```
-
-#### (PUT) api/users/update
-
-**Request Example:**
-
-```json
-{
-  "id": 17,
-  "name": "Test",
-  "surname": "User",
-  "phone": "77086144676"
-}
-```
-
-#### (DELETE) api/users/delete
-
-**Request Example:**
-
-```json
-{
-  "id": 17
-}
-```
-
-#### (GET) api/stats/count
-
-**Response Example:**
-
-```json
-{
-  "count": 17
-}
-```
-
-#### (GET) api/stats/generate
+### (GET) api/stats/generate
 
 **Response Example:**
 

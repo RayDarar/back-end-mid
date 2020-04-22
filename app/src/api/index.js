@@ -1,8 +1,15 @@
 import axios from "axios";
 
+const source = "php"; // django
+
 const api = axios.create({
-  baseURL: "http://localhost:80/api",
+  baseURL: "http://localhost:8000/api",
 });
+
+const resolveSource = (point) => {
+  if (source == "php") return point + ".php";
+  else if (source == "django") return point;
+};
 
 export default {
   async register(phone, name, surname, gender, password, birthday) {
@@ -19,7 +26,7 @@ export default {
       birthday: `${day}-${month}-${year}`,
     };
 
-    return await api.post("/users/create.php", body);
+    return await api.post(resolveSource("/users/create"), body);
   },
   async validate(phone, password) {
     phone = phone.substr(1);
@@ -29,17 +36,18 @@ export default {
       password,
     };
 
-    return await api.post("/users/validate.php", body);
+    return await api.post(resolveSource("/users/validate"), body);
   },
   async getUsers() {
-    let result = await api.get("/users/get.php");
+    let result = await api.get(resolveSource("/users/get"));
+
     return result.data.data.map((item) => {
       item.gender = item.gender == "1" ? "male" : "female";
       return item;
     });
   },
   async updateUser(id, name, surname, phone) {
-    const result = await api.put("/users/update.php", {
+    const result = await api.put(resolveSource("/users/update"), {
       id,
       name,
       surname,
@@ -49,16 +57,16 @@ export default {
     return result.status == 200;
   },
   async deleteUser(id) {
-    const result = await api.delete("/users/delete.php", {
+    const result = await api.delete(resolveSource("/users/delete"), {
       id,
     });
 
     return result.status == 200;
   },
   async countUsers() {
-    return await api.get("/stats/count.php");
+    return await api.get(resolveSource("/stats/count"));
   },
   async generateMatrix() {
-    return await api.get("stats/generate.php");
+    return await api.get(resolveSource("stats/generate"));
   },
 };

@@ -1,19 +1,25 @@
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.core import serializers
-from django.views.generic import View
 from django.views.decorators.csrf import csrf_exempt
 from .models import User
 import json
 import hashlib 
 
-class UserActions(View):
-  def get(self, request, *args, **kwargs):
-    qs = serializers.serialize('python', User.objects.all())
-    for user in qs:
-      del user["model"]
-      del user["fields"]["password"]
-    return JsonResponse(qs, safe=False)
+
+def get(request):
+  qs = serializers.serialize('python', User.objects.all())
+  res = {}
+  res["rows"] = len(qs)
+  res["data"] = []
+
+  for user in qs:
+    fields = user["fields"]
+    fields["id"] = user["pk"]
+    del fields["password"]
+    res["data"].append(fields)
+
+  return JsonResponse(res, safe=False)
 
 @csrf_exempt
 def validate(request):
@@ -24,9 +30,9 @@ def validate(request):
     fields = user["fields"]
     if fields["phone_number"] == body["phone"]:
       if fields["password"] == body["password"]:
-        del user["model"]
-        del user["fields"]["password"]
-        return JsonResponse(user, safe=False)
+        fields["id"] = user["pk"]
+        del fields["password"]
+        return JsonResponse(fields, safe=False)
       else:
         return JsonResponse({ "err": "password is incorrect "})
     pass
