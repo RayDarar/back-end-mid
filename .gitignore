@@ -7,3 +7,4 @@ static/
 
 # virtual env
 django-server/env
+__pycache__/

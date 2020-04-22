@@ -31,6 +31,12 @@ Assuming you are using xampp installed on /opt/lampp: `cp -r php-server/api stat
 2. Run apache and mysql server
 3. Run `eco_beko.sql` at your mysql database
 
+### In Case of Django Server
+
+1. In `django-server` folder issue `python3 -m venv env` command
+2. Activate the environment: `source env/bin/activate` (In Linux)
+3. Install django: `pip install django` and REST framework `pip install djangorestframework`
+
 ## Compile web-app for development
 
 In `app/` issue `yarn serve`. (Do not forget to run your php server that serves `api/` folder)
