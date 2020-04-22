@@ -6,5 +6,6 @@ urlpatterns = [
   path("users/validate", views.validate),
   path("users/create", views.create),
   path("users/update", views.update),
-  path("users/delete", views.delete)
+  path("users/delete", views.delete),
+  path("stats/count", views.count)
 ]

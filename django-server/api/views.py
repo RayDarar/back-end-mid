@@ -70,6 +70,12 @@ def delete(request):
 
   return HttpResponse(status=200)
 
+def count(request):
+  users = serializers.serialize('python', User.objects.all())
+  return JsonResponse({
+    "count": len(users)
+  })
+
 def parseBody(request):
   body_unicode = request.body.decode('utf-8')
   body = json.loads(body_unicode)
