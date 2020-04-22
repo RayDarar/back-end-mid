@@ -51,7 +51,7 @@ export default {
         phone: {
           value: "+7",
           error: false,
-          pattern: /^([\+7])([0-9]+){10}/i,
+          pattern: /^(\+7)([0-9]+){10}/i,
         },
       },
     };
@@ -64,7 +64,7 @@ export default {
 
       if (!phone.error && !password.error) {
         const response = await api.validate(phone.value, password.value);
-
+        
         if (response.data.err) {
           this.$refs.box.alert(response.data.err || response.data);
         } else if (response.data.phone === phone.value.substr(1)) {

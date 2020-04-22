@@ -1,10 +1,12 @@
 import axios from "axios";
 
-const source = "php"; // django
+const source = "django"; // django
 
 const api = axios.create({
   baseURL: "http://localhost:8000/api",
 });
+
+globalThis.api = api;
 
 const resolveSource = (point) => {
   if (source == "php") return point + ".php";
@@ -47,6 +49,7 @@ export default {
     });
   },
   async updateUser(id, name, surname, phone) {
+    phone = phone.substr(1);
     const result = await api.put(resolveSource("/users/update"), {
       id,
       name,

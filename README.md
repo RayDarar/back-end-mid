@@ -14,7 +14,14 @@ Project is build using Vue and PHP as REST Api back-end.
 1. Go to `app/` folder.
 2. Install dependencies using `yarn` or `npm install`.
 3. Issue `yarn build` or `npm run build` commands to build static files at `static/` folder;
-4. Go `app/src/api/index.js` and replace baseUrl for your api requests.
+4. Set source to either php or django (depending on which serve you'll use)
+
+```js
+// example
+const source = "django";
+```
+
+1. Go `app/src/api/index.js` and replace baseUrl for your api requests.
 
 ```js
 const api = axios.create({

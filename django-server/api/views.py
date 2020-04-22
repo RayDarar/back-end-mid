@@ -30,9 +30,17 @@ def validate(request):
     fields = user["fields"]
     if fields["phone_number"] == body["phone"]:
       if fields["password"] == body["password"]:
-        fields["id"] = user["pk"]
-        del fields["password"]
-        return JsonResponse(fields, safe=False)
+        temp = {}
+        temp["id"] = user["pk"]
+        temp["name"] = fields["first_name"]
+        temp["surname"] = fields["last_name"]
+        temp["phone"] = fields["phone_number"]
+        temp["birthday"] = fields["birthday"]
+        if (fields["gender"]):
+          temp["gender"] = "male"
+        else:
+          temp["gender"] = "female"
+        return JsonResponse(temp, safe=False)
       else:
         return JsonResponse({ "err": "password is incorrect "})
     pass

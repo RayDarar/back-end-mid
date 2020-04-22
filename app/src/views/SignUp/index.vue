@@ -122,7 +122,7 @@ export default {
         } else {
           // the most hardcoded piece of doom, that I have ever done (sorry future me)
           const user = (await api.validate(phone.value, password.value)).data;
-          if (user === phone.value.substr(1)) {
+          if (user?.phone === phone.value.substr(1)) {
             this.$store.commit("setToken", user);
             this.$router.push("/");
           } else {
@@ -153,7 +153,7 @@ export default {
         phone: {
           value: "+7",
           error: false,
-          pattern: /^([\+7])([0-9]+){10}/i,
+          pattern: /^(\+7)([0-9]+){10}/i,
         },
         gender: {
           value: "",

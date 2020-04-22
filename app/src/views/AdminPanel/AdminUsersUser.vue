@@ -53,7 +53,7 @@ export default {
         phone: {
           value: "+7",
           error: false,
-          pattern: /^([\+7])([0-9]+){10}/i,
+          pattern: /^(\+7)([0-9]+){10}/i,
         },
       },
     };
