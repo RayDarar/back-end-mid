@@ -35,7 +35,7 @@ Assuming you are using xampp installed on /opt/lampp: `cp -r php-server/api stat
 
 1. In `django-server` folder issue `python3 -m venv env` command
 2. Activate the environment: `source env/bin/activate` (In Linux)
-3. Install django: `pip install django` and REST framework `pip install djangorestframework`
+3. Install django: `pip install django`
 
 ## Compile web-app for development
 
@@ -109,7 +109,7 @@ In `app/` issue `yarn serve`. (Do not forget to run your php server that serves 
   "surname": "Test",
   "phone": "77086144677",
   "birthday": "2000-12-12",
-  "gender": "male",
+  "gender": 1,
   "password": "awdawdawd"
 }
 ```
@@ -144,6 +144,123 @@ In `app/` issue `yarn serve`. (Do not forget to run your php server that serves 
 ```
 
 #### (DELETE) api/users/delete.php
+
+**Request Example:**
+
+```json
+{
+  "id": 17
+}
+```
+
+### Django server
+
+#### (GET) /api/users/get
+
+**Response Example:**
+
+```json
+[
+  {
+    "pk": 1,
+    "fields": {
+      "first_name": "Ansar",
+      "last_name": "Ryspekov",
+      "gender": 1,
+      "birthday": "2020-04-22",
+      "phone_number": "77086144672"
+    }
+  },
+  {
+    "pk": 2,
+    "fields": {
+      "first_name": "Tomiris",
+      "last_name": "Ryspekova",
+      "gender": 0,
+      "birthday": "2020-04-22",
+      "phone_number": "77086144670"
+    }
+  }
+]
+```
+
+#### (POST) api/users/validate
+
+**Request Example:**
+
+```json
+{
+  "phone": "77086144677",
+  "password": "awdawdawd"
+}
+```
+
+**Response Example-1:**
+
+```json
+{
+  "err": "password is incorrect"
+}
+```
+
+**Response Example-2:**
+
+```json
+{
+  "id": "12",
+  "name": "Test",
+  "surname": "Test",
+  "phone": "77086144677",
+  "birthday": "2000-12-12",
+  "gender": "male"
+}
+```
+
+#### (POST) api/users/create
+
+**Request Example:**
+
+```json
+{
+  "name": "Test",
+  "surname": "Test",
+  "phone": "77086144677",
+  "birthday": "2000-12-12",
+  "gender": 1,
+  "password": "awdawdawd"
+}
+```
+
+**Response Example-1:**
+
+```json
+{
+  "err": "user exists"
+}
+```
+
+**Response Example-2:**
+
+```json
+{
+  "status": "success"
+}
+```
+
+#### (PUT) api/users/update
+
+**Request Example:**
+
+```json
+{
+  "id": 17,
+  "name": "Test",
+  "surname": "User",
+  "phone": "77086144676"
+}
+```
+
+#### (DELETE) api/users/delete
 
 **Request Example:**
 

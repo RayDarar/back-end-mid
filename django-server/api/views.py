@@ -48,6 +48,19 @@ def create(request):
 
   return JsonResponse({ "status": "success" })
 
+@csrf_exempt
+def update(request):
+  body = parseBody(request)
+  user = User.objects.get(id=body["id"])
+
+  user.first_name = body["name"]
+  user.last_name = body["surname"]
+  user.phone_number = body["phone"]
+
+  user.save()
+
+  return HttpResponse(status=200)
+
 def parseBody(request):
   body_unicode = request.body.decode('utf-8')
   body = json.loads(body_unicode)
