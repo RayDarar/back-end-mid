@@ -153,6 +153,30 @@ In `app/` issue `yarn serve`. (Do not forget to run your php server that serves 
 }
 ```
 
+#### (GET) api/stats/count.php
+
+**Response Example:**
+
+```json
+{
+  "count": 17
+}
+```
+
+#### (GET) api/stats/generate.php
+
+**Response Example:**
+
+```json
+{
+  "matrix": [
+    [
+      // data
+    ]
+  ]
+}
+```
+
 ### Django server
 
 #### (GET) /api/users/get
@@ -267,5 +291,29 @@ In `app/` issue `yarn serve`. (Do not forget to run your php server that serves 
 ```json
 {
   "id": 17
+}
+```
+
+#### (GET) api/stats/count
+
+**Response Example:**
+
+```json
+{
+  "count": 17
+}
+```
+
+#### (GET) api/stats/generate
+
+**Response Example:**
+
+```json
+{
+  "matrix": [
+    [
+      // data
+    ]
+  ]
 }
 ```
