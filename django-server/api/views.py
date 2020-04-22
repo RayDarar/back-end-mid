@@ -1,14 +1,54 @@
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.core import serializers
+from django.views.generic import View
+from django.views.decorators.csrf import csrf_exempt
 from .models import User
+import json
+import hashlib 
 
-def index(request):
-  return HttpResponse("Hello, World!")
+class UserActions(View):
+  def get(self, request, *args, **kwargs):
+    qs = serializers.serialize('python', User.objects.all())
+    for user in qs:
+      del user["model"]
+      del user["fields"]["password"]
+    return JsonResponse(qs, safe=False)
 
-def get(request):
-  qs = serializers.serialize('python', User.objects.all())
-  for user in qs:
-    del user["model"]
-    del user["fields"]["password"]
-  return JsonResponse(qs, safe=False)
+@csrf_exempt
+def validate(request):
+  users = serializers.serialize('python', User.objects.all())
+  body = parseBody(request)
+
+  for user in users:
+    fields = user["fields"]
+    if fields["phone_number"] == body["phone"]:
+      if fields["password"] == body["password"]:
+        del user["model"]
+        del user["fields"]["password"]
+        return JsonResponse(user, safe=False)
+      else:
+        return JsonResponse({ "err": "password is incorrect "})
+    pass
+  
+  return JsonResponse({ "err": "user not found" })
+
+@csrf_exempt
+def create(request):
+  body = parseBody(request)
+  users = serializers.serialize('python', User.objects.all())
+
+  for user in users:
+    fields = user["fields"]
+    if fields["phone_number"] == body["phone"]:
+      return JsonResponse({ "err": "user exists" })
+
+  newUser = User.create(body["name"], body["surname"], body["gender"], body["password"], body["birthday"], body["phone"])
+  newUser.save()
+
+  return JsonResponse({ "status": "success" })
+
+def parseBody(request):
+  body_unicode = request.body.decode('utf-8')
+  body = json.loads(body_unicode)
+  return body
