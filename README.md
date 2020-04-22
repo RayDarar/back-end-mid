@@ -56,7 +56,7 @@ For php server, add .php extension to each route
 
 **Response example:**
 
-```json
+```js
 {
   "rows": 4,
   "data": [
@@ -77,7 +77,7 @@ For php server, add .php extension to each route
 
 **Request Example:**
 
-```json
+```js
 {
   "phone": "77086144677",
   "password": "awdawdawd"
@@ -86,7 +86,7 @@ For php server, add .php extension to each route
 
 **Response Example-1:**
 
-```json
+```js
 {
   "err": "password is incorrect"
 }
@@ -94,7 +94,7 @@ For php server, add .php extension to each route
 
 **Response Example-2:**
 
-```json
+```js
 {
   "id": "12",
   "name": "Test",
@@ -109,7 +109,7 @@ For php server, add .php extension to each route
 
 **Request Example:**
 
-```json
+```js
 {
   "name": "Test",
   "surname": "Test",
@@ -122,7 +122,7 @@ For php server, add .php extension to each route
 
 **Response Example-1:**
 
-```json
+```js
 {
   "err": "user exists"
 }
@@ -130,7 +130,7 @@ For php server, add .php extension to each route
 
 **Response Example-2:**
 
-```json
+```js
 {
   "status": "success"
 }
@@ -140,7 +140,7 @@ For php server, add .php extension to each route
 
 **Request Example:**
 
-```json
+```js
 {
   "id": 17,
   "name": "Test",
@@ -153,7 +153,7 @@ For php server, add .php extension to each route
 
 **Request Example:**
 
-```json
+```js
 {
   "id": 17
 }
@@ -163,7 +163,7 @@ For php server, add .php extension to each route
 
 **Response Example:**
 
-```json
+```js
 {
   "count": 17
 }
@@ -173,7 +173,7 @@ For php server, add .php extension to each route
 
 **Response Example:**
 
-```json
+```js
 {
   "matrix": [
     [
