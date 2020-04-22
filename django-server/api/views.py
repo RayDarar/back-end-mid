@@ -61,6 +61,15 @@ def update(request):
 
   return HttpResponse(status=200)
 
+@csrf_exempt
+def delete(request):
+  body = parseBody(request)
+  user = User.objects.get(id=body["id"])
+
+  user.delete()
+
+  return HttpResponse(status=200)
+
 def parseBody(request):
   body_unicode = request.body.decode('utf-8')
   body = json.loads(body_unicode)
