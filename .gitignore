@@ -4,3 +4,6 @@ node_modules/
 # misc
 sula/
 static/
+
+# virtual env
+django-server/env
