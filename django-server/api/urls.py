@@ -7,5 +7,6 @@ urlpatterns = [
   path("users/create", views.create),
   path("users/update", views.update),
   path("users/delete", views.delete),
-  path("stats/count", views.count)
+  path("stats/count", views.count),
+  path("stats/generate", views.generate)
 ]

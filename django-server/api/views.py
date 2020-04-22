@@ -76,6 +76,21 @@ def count(request):
     "count": len(users)
   })
 
+def generate(request):
+  users = serializers.serialize('python', User.objects.all())
+  matrix = []
+  for i, user in enumerate(users):
+    id = user["pk"]
+    phone = user["fields"]["phone_number"]
+    matrix.append([])
+    for c in phone:
+      matrix[i].append(int(c) * id)
+      
+
+  return JsonResponse({
+    "matrix": matrix
+  })
+
 def parseBody(request):
   body_unicode = request.body.decode('utf-8')
   body = json.loads(body_unicode)
